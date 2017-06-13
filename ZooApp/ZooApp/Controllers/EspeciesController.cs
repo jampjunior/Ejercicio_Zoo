@@ -10,9 +10,28 @@ namespace ZooApp.Controllers
     public class EspeciesController : ApiController
     {
         // GET: api/Especies
-        public IEnumerable<string> Get()
+        public RespuestaApi Get()
         {
-            return new string[] { "value1", "value2" };
+            RespuestaApi resultado = new RespuestaApi();
+            List<Especies> especie = new List<Especies>();
+            try
+            {
+                Db.Conectar();
+                if (Db.EstaLaConexionAbierta())
+                {
+                    especie = Db.MuestrameLasEspecies();
+                }
+                resultado.Error = "";
+                Db.Desconectar();
+
+            }
+            catch (Exception)
+            {
+                resultado.Error = "Te estoy petando Bro!";
+            }
+            resultado.TotalElemento = especie.Count;
+            resultado.especie = especie;
+            return resultado;
         }
 
         // GET: api/Especies/5

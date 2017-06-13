@@ -7,19 +7,19 @@ using System.Web.Http;
 
 namespace ZooApp.Controllers
 {
-    public class ClasificacionController : ApiController
+    public class TipoAnimalController : ApiController
     {
-        // GET: api/Clasificacion
+      //  GET: api/TipoAnimal
         public RespuestaApi Get()
         {
             RespuestaApi resultado = new RespuestaApi();
-            List<Clasificacion> clasificacion = new List<Clasificacion>();
+            List<TiposAnimales> TiposAnimales = new List<TiposAnimales>();
             try
             {
                 Db.Conectar();
                 if (Db.EstaLaConexionAbierta())
                 {
-                    clasificacion = Db.clasificacion();
+                    TiposAnimales = Db.MostrarLosTiposDeAnimales();
                 }
                 resultado.Error = "";
                 Db.Desconectar();
@@ -29,28 +29,28 @@ namespace ZooApp.Controllers
             {
                 resultado.Error = "Te estoy petando Bro!";
             }
-            resultado.TotalElemento = clasificacion.Count;
-            resultado.clasificacion = clasificacion;
+            resultado.TotalElemento = TiposAnimales.Count;
+            resultado.TiposAnimales = TiposAnimales;
             return resultado;
         }
 
-        // GET: api/Claificacion/5
+        // GET: api/TipoAnimal/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/Claificacion
+        // POST: api/TipoAnimal
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/Claificacion/5
+        // PUT: api/TipoAnimal/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Claificacion/5
+        // DELETE: api/TipoAnimal/5
         public void Delete(int id)
         {
         }
