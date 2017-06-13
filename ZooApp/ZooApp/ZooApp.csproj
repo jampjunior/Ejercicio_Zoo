@@ -114,7 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\InformeDeZooController.cs" />
+    <Compile Include="Controllers\ClaificacionController.cs" />
+    <Compile Include="Controllers\EspeciesController.cs" />
+    <Compile Include="Controllers\TiposDeAnimalesController.cs" />
     <Compile Include="Db\Db.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

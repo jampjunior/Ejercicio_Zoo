@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace ZooApp.Controllers
 {
-    public class InformeDeZooController : ApiController
+    public class TiposDeAnimalesController : ApiController
     {
         // GET: api/InformeDeZoo
         public IEnumerable<string> Get()
