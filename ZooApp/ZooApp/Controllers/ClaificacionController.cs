@@ -60,13 +60,62 @@ namespace ZooApp.Controllers
         }
 
         // POST: api/Claificacion
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public IHttpActionResult Post([FromBody]Clasificacion clasificacion)
         {
+            RespuestaApi respuesta = new RespuestaApi();
+            respuesta.Error = "";
+            int filasAfectadas = 0;
+            try
+            {
+                Db.Conectar();
+                if (Db.EstaLaConexionAbierta())
+                {
+                    filasAfectadas = Db.Agregarclasificar(clasificacion);
+
+                }
+                respuesta.TotalElemento = filasAfectadas;
+                Db.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                respuesta.TotalElemento = 0;
+                respuesta.Error = "Te estoy petando Bro!";
+            }
+
+            return Ok(respuesta);
+
         }
 
         // PUT: api/Claificacion/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public IHttpActionResult Put(int id, [FromBody]Clasificacion clasificacion)
         {
+            RespuestaApi respuesta = new RespuestaApi();
+            respuesta.Error = "";
+            int filasAfectadas = 0;
+            try
+            {
+                Db.Conectar();
+                if (Db.EstaLaConexionAbierta())
+                {
+                    filasAfectadas = Db.ActualizarClasi(id, clasificacion);
+
+                }
+                respuesta.TotalElemento = filasAfectadas;
+                Db.Desconectar();
+            }
+            catch (Exception ex)
+            {
+
+                respuesta.TotalElemento = 0;
+                respuesta.Error = "error al actualizar la marca";
+            }
+
+            return Ok(respuesta);
+
+
+
         }
 
         // DELETE: api/Claificacion/5

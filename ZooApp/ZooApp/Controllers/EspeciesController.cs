@@ -60,8 +60,31 @@ namespace ZooApp.Controllers
         }
 
         // POST: api/Especies
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public IHttpActionResult Post([FromBody]Especies especie)
         {
+            RespuestaApi respuesta = new RespuestaApi();
+            respuesta.Error = "";
+            int filasAfectadas = 0;
+            try
+            {
+                Db.Conectar();
+                if (Db.EstaLaConexionAbierta())
+                {
+                    filasAfectadas = Db.AgregarEspecie(especie);
+
+                }
+                respuesta.TotalElemento = filasAfectadas;
+                Db.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                respuesta.TotalElemento = 0;
+                respuesta.Error = "Te estoy petando Bro!";
+            }
+
+            return Ok(respuesta);
+
         }
 
         // PUT: api/Especies/5

@@ -240,6 +240,119 @@ namespace ZooApp
 
         }
 
+        public static int Agregaranimal(TiposAnimales TiposAnimales)
+        {
+            string procedimiento = "dbo.AgregarTipoAnimal";
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure; 
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "denominacion";
+            parametro.SqlDbType = SqlDbType.NVarChar;
+            parametro.SqlValue = TiposAnimales.denominacion; //donde quiero meter los parámetros
+            comando.Parameters.Add(parametro);
+            int filasAfectadas = comando.ExecuteNonQuery();
+
+
+            return filasAfectadas;
+        }
+
+        public static int Agregarclasificar(Clasificacion clasificacion)
+        {
+            string procedimiento = "dbo.AgregarClasificacion";
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "denominacion";
+            parametro.SqlDbType = SqlDbType.NVarChar;
+            parametro.SqlValue = clasificacion.denominacion; 
+            comando.Parameters.Add(parametro);
+            int filasAfectadas = comando.ExecuteNonQuery();
+            return filasAfectadas;
+        }
+
+        public static int AgregarEspecie(Especies especie)
+        {
+            string procedimiento = "dbo.AgregarEspecie";
+       
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            ////PK id
+            //SqlParameter parametro = new SqlParameter();
+            //parametro.ParameterName = "idEspecie";
+            //parametro.SqlDbType = SqlDbType.BigInt;
+            //parametro.SqlValue = especie.idEspecie;
+            //comando.Parameters.Add(parametro);    
+            //FK Clasificacion
+            SqlParameter parametroClasi = new SqlParameter();
+            comando.CommandType = CommandType.StoredProcedure;
+            parametroClasi.ParameterName = "idClasificacion";
+            parametroClasi.SqlDbType = SqlDbType.BigInt;
+            parametroClasi.SqlValue = especie.clasificacion.idClasificacion;
+            comando.Parameters.Add(parametroClasi);
+            //Tipoanimal
+            SqlParameter parametroTipo = new SqlParameter();       
+            parametroTipo.ParameterName = "idTipoAnimal";
+            parametroTipo.SqlDbType = SqlDbType.BigInt;
+            parametroTipo.SqlValue = especie.tipoAnimales.idTipoAnimal;
+            comando.Parameters.Add(parametroTipo);
+            //Nombre
+            SqlParameter parametroNombre = new SqlParameter();           
+            parametroNombre.ParameterName = "nombre";
+            parametroNombre.SqlDbType = SqlDbType.NVarChar;
+            parametroNombre.SqlValue = especie.nombre;
+            comando.Parameters.Add(parametroNombre);
+            
+            // nPatas
+            SqlParameter parametroNpatas = new SqlParameter();         
+            parametroNpatas.ParameterName = "nPatas";
+            parametroNpatas.SqlDbType = SqlDbType.SmallInt;
+            parametroNpatas.SqlValue = especie.nPatas;
+            comando.Parameters.Add(parametroNpatas);
+            
+            // EsMascota
+            SqlParameter parametroEs = new SqlParameter();
+            parametroEs.ParameterName = "esMascota";
+            parametroEs.SqlDbType = SqlDbType.Bit;
+            parametroEs.SqlValue = especie.esMascota;
+            comando.Parameters.Add(parametroEs);
+
+
+
+            int filasAfectadas = comando.ExecuteNonQuery();
+            return filasAfectadas;
+        } 
+
+        public static int ActualizarClasi(long id, Clasificacion clasificacion)
+        {
+            string procedimiento = "dbo.ActualizarClasificacion";
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure; //lo que te voy a pasar no es un select y es un PA
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "idClasificacion";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = clasificacion.idClasificacion; //donde quiero meter los parámetros  
+            comando.Parameters.Add(parametro);
+            //poner dos parámetros
+            SqlParameter Denominacion = new SqlParameter();
+            Denominacion.ParameterName = "denominacion";
+            Denominacion.SqlDbType = SqlDbType.NVarChar;
+            Denominacion.SqlValue = clasificacion.denominacion;
+            comando.Parameters.Add(Denominacion);
+
+
+
+            int filasAfectadas = comando.ExecuteNonQuery();
+
+
+            return filasAfectadas;
+        }
+
+        
+
+
+
+
+
 
 
 

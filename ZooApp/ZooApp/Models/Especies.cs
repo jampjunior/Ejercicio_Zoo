@@ -13,6 +13,8 @@ namespace ZooApp
         public string nombre { get; set; }
         public Int16 nPatas { get; set; }
         public Boolean esMascota { get; set; }
+        public Clasificacion clasificacion { get; set; }
+        public TiposAnimales tipoAnimales { get; set; }
 
 
     }
