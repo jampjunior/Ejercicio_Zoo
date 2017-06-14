@@ -35,9 +35,28 @@ namespace ZooApp.Controllers
         }
 
         // GET: api/Especies/5
-        public string Get(int id)
+        public RespuestaApi Get(long id)
         {
-            return "value";
+            RespuestaApi resultado = new RespuestaApi();
+            List<Especies> tipos = new List<Especies>();
+            try
+            {
+                Db.Conectar();
+                if (Db.EstaLaConexionAbierta())
+                {
+                    tipos = Db.EspeciesPorId(id);
+
+                }
+                resultado.Error = "";
+                Db.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                resultado.Error = "Te estoy petando Bro!";
+            }
+            resultado.TotalElemento = tipos.Count;
+            resultado.especie = tipos;
+            return resultado;
         }
 
         // POST: api/Especies

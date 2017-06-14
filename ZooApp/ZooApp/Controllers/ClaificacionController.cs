@@ -19,7 +19,7 @@ namespace ZooApp.Controllers
                 Db.Conectar();
                 if (Db.EstaLaConexionAbierta())
                 {
-                    clasificacion = Db.clasificacion();
+                    clasificacion = Db.ClasificacionDeAnimales();
                 }
                 resultado.Error = "";
                 Db.Desconectar();
@@ -34,10 +34,29 @@ namespace ZooApp.Controllers
             return resultado;
         }
 
-        // GET: api/Claificacion/5
-        public string Get(int id)
+        // GET: api/Clasificacion/5
+        public RespuestaApi Get(long id)
         {
-            return "value";
+            RespuestaApi resultado = new RespuestaApi();
+            List<Clasificacion> tipo = new List<Clasificacion>();
+            try
+            {
+                Db.Conectar();
+                if (Db.EstaLaConexionAbierta())
+                {
+                    tipo = Db.ClasificacionPorId(id);
+                    
+                }
+                resultado.Error = "";
+                Db.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                resultado.Error = "Te estoy petando Bro!";
+            }
+            resultado.TotalElemento = tipo.Count;
+            resultado.clasificacion = tipo;
+            return resultado;
         }
 
         // POST: api/Claificacion
