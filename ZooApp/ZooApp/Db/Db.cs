@@ -368,11 +368,40 @@ namespace ZooApp
             return filasAfectadas;
         }
 
+<<<<<<< HEAD
         public static int ActualizarEspecies(long id, Especies especie)
         {
             string procedimiento = "dbo.ActualizarEspecie";
             SqlCommand comando = new SqlCommand(procedimiento, conexion);
             comando.CommandType = CommandType.StoredProcedure; //lo que te voy a pasar no es un select y es un PA
+=======
+        public static int ActualizarClasi(long id, TiposAnimales tipoAnimales)
+        {
+            string procedimiento = "dbo.ActualizarClasificacion";
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure; //lo que te voy a pasar no es un select y es un PA
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "idClasificacion";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = clasificacion.idClasificacion; //donde quiero meter los parámetros  
+            comando.Parameters.Add(parametro);
+            //poner dos parámetros
+            SqlParameter Denominacion = new SqlParameter();
+            Denominacion.ParameterName = "denominacion";
+            Denominacion.SqlDbType = SqlDbType.NVarChar;
+            Denominacion.SqlValue = clasificacion.denominacion;
+            comando.Parameters.Add(Denominacion);
+
+
+
+            int filasAfectadas = comando.ExecuteNonQuery();
+
+
+            return filasAfectadas;
+        }
+
+
+>>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
 
             ////PK id
             SqlParameter parametro = new SqlParameter();
