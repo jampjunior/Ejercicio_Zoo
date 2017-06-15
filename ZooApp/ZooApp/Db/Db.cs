@@ -369,12 +369,15 @@ namespace ZooApp
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         public static int ActualizarEspecies(long id, Especies especie)
         {
             string procedimiento = "dbo.ActualizarEspecie";
             SqlCommand comando = new SqlCommand(procedimiento, conexion);
             comando.CommandType = CommandType.StoredProcedure; //lo que te voy a pasar no es un select y es un PA
 =======
+=======
+>>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
         public static int ActualizarClasi(long id, TiposAnimales tipoAnimales)
         {
             string procedimiento = "dbo.ActualizarClasificacion";
@@ -391,6 +394,17 @@ namespace ZooApp
             Denominacion.SqlDbType = SqlDbType.NVarChar;
             Denominacion.SqlValue = clasificacion.denominacion;
             comando.Parameters.Add(Denominacion);
+<<<<<<< HEAD
+=======
+
+
+
+            int filasAfectadas = comando.ExecuteNonQuery();
+
+
+            return filasAfectadas;
+        }
+>>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
 
 
 

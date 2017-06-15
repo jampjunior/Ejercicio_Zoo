@@ -100,7 +100,11 @@ namespace ZooApp.Controllers
                 if (Db.EstaLaConexionAbierta())
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     filasAfectadas = Db.Actualizartipos(id, TiposAnimales);
+=======
+                    filasAfectadas = Db.ActualizarTipo(id, TiposAnimales);
+>>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
 =======
                     filasAfectadas = Db.ActualizarTipo(id, TiposAnimales);
 >>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
@@ -111,6 +115,7 @@ namespace ZooApp.Controllers
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
 <<<<<<< HEAD
 
                 respuesta.TotalElemento = 0;
@@ -128,6 +133,9 @@ namespace ZooApp.Controllers
         public IHttpActionResult Delete(int id)
 =======
 
+=======
+
+>>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
                 respuesta.TotalElemento = 0;
                 respuesta.Error = "error al actualizar la marca";
             }
@@ -137,6 +145,9 @@ namespace ZooApp.Controllers
         }
             // DELETE: api/TipoAnimal/5
             public void Delete(int id)
+<<<<<<< HEAD
+>>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
+=======
 >>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
         {
             RespuestaApi respuesta = new RespuestaApi();
