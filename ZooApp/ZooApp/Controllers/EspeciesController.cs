@@ -88,13 +88,62 @@ namespace ZooApp.Controllers
         }
 
         // PUT: api/Especies/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public IHttpActionResult Put(int id, [FromBody]Especies especie)
         {
+            RespuestaApi respuesta = new RespuestaApi();
+            respuesta.Error = "";
+            int filasAfectadas = 0;
+            try
+            {
+                Db.Conectar();
+                if (Db.EstaLaConexionAbierta())
+                {
+                    filasAfectadas = Db.ActualizarEspecies(id, especie);
+
+                }
+                respuesta.TotalElemento = filasAfectadas;
+                Db.Desconectar();
+            }
+            catch (Exception ex)
+            {
+
+                respuesta.TotalElemento = 0;
+                respuesta.Error = "error al actualizar la especie";
+            }
+
+            return Ok(respuesta);
+
+
+
         }
 
         // DELETE: api/Especies/5
-        public void Delete(int id)
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
         {
+            RespuestaApi respuesta = new RespuestaApi();
+            respuesta.Error = "";
+            int filasAfectadas = 0;
+            try
+            {
+                Db.Conectar();
+                if (Db.EstaLaConexionAbierta())
+                {
+                    filasAfectadas = Db.EliminarEspe(id);
+
+                }
+                respuesta.TotalElemento = filasAfectadas;
+                Db.Desconectar();
+            }
+            catch (Exception ex)
+            {
+
+                respuesta.TotalElemento = 0;
+                respuesta.Error = "Petardaso te salió men";
+            }
+
+            return Ok(respuesta);
         }
     }
 }
