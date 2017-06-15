@@ -109,6 +109,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Archivos\css\estilos.css" />
+    <Content Include="Archivos\index.html" />
+    <Content Include="Archivos\js\eventos.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -99,15 +99,11 @@ namespace ZooApp.Controllers
                 Db.Conectar();
                 if (Db.EstaLaConexionAbierta())
                 {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
                     filasAfectadas = Db.Actualizartipos(id, TiposAnimales);
-=======
-                    filasAfectadas = Db.ActualizarTipo(id, TiposAnimales);
->>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
-=======
-                    filasAfectadas = Db.ActualizarTipo(id, TiposAnimales);
->>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
+
+                    
 
                 }
                 respuesta.TotalElemento = filasAfectadas;
@@ -115,8 +111,6 @@ namespace ZooApp.Controllers
             }
             catch (Exception ex)
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
 
                 respuesta.TotalElemento = 0;
                 respuesta.Error = "error al actualizar la marca";
@@ -131,24 +125,6 @@ namespace ZooApp.Controllers
         // DELETE: api/TipoAnimal/5
         [HttpDelete]
         public IHttpActionResult Delete(int id)
-=======
-
-=======
-
->>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
-                respuesta.TotalElemento = 0;
-                respuesta.Error = "error al actualizar la marca";
-            }
-
-            return Ok(respuesta);
-
-        }
-            // DELETE: api/TipoAnimal/5
-            public void Delete(int id)
-<<<<<<< HEAD
->>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
-=======
->>>>>>> 0dd318a0b0644d9cbee33daecc7ae28aa5b624ac
         {
             RespuestaApi respuesta = new RespuestaApi();
             respuesta.Error = "";
@@ -159,20 +135,20 @@ namespace ZooApp.Controllers
                 if (Db.EstaLaConexionAbierta())
                 {
                     filasAfectadas = Db.Eliminartipo(id);
-
                 }
                 respuesta.TotalElemento = filasAfectadas;
-                Db.Desconectar();
             }
             catch (Exception ex)
             {
 
                 respuesta.TotalElemento = 0;
-                respuesta.Error = "Petardaso te salió men";
+                respuesta.Error = "Te estoy pentando men";
             }
-
             return Ok(respuesta);
         }
+
+
+             
 
 
 
