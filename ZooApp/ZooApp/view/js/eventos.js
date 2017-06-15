@@ -18,7 +18,7 @@
                 lista += '        <td>Acciones</td>'
                 lista += '    </tr>';
 
-                $.each(respuesta.dataMarca, function (indice, elemento) {
+                $.each(respuesta.especie, function (indice, elemento) {
 
                     lista += '    <tr>';
                     lista += '        <td>' + elemento.idEspecie + '</td>';
@@ -48,77 +48,77 @@
 
     }
 
-    $('#resultado').on('click', '#eliminar', function () {
-        var idespecie = $(this).attr('data-id');
-        var urlAPI = 'http://localhost:51093/api/Especies';
-        $.ajax({
-            url: urlAPI + '/' + idespecie,
-            type: "DELETE",
-            success: function (respuesta) {
-                Getespecies();
-            },
-            error: function (respuesta) {
-                console.log(respuesta);
-            }
-        });
-    });
+    //$('#resultado').on('click', '#eliminar', function () {
+    //    var idespecie = $(this).attr('data-id');
+    //    var urlAPI = 'http://localhost:51093/api/Especies';
+    //    $.ajax({
+    //        url: urlAPI + '/' + idespecie,
+    //        type: "DELETE",
+    //        success: function (respuesta) {
+    //            Getespecies();
+    //        },
+    //        error: function (respuesta) {
+    //            console.log(respuesta);
+    //        }
+    //    });
+    //});
 
 
 
-    $('#btnespecies').click(function () {
-        // debugger;
-        var idespecie = $('#txtMarcaDenominacion').val();
-        var urlAPI = 'http://localhost:51093/api/Especies';
-        var dataNuevaEspe = {
-            id: 0,
-            denominacion: idespecie
-        };
-        // debugger;
+    //$('#btnespecies').click(function () {
+    //    // debugger;
+    //    var idespecie = $('#txtMarcaDenominacion').val();
+    //    var urlAPI = 'http://localhost:51093/api/Especies';
+    //    var dataNuevaEspe = {
+    //        id: 0,
+    //        denominacion: idespecie
+    //    };
+    //    // debugger;
 
-        $.ajax({
-            url: urlAPI,
-            type: "POST",
-            dataType: 'json',
-            data: dataNuevaEspe,
-            success: function (respuesta) {
-                //debugger;
-                console.log(respuesta);
-                Getespecies();
-            },
-            error: function (respuesta) {
-                console.log(respuesta);
-            }
-        });
+    //    $.ajax({
+    //        url: urlAPI,
+    //        type: "POST",
+    //        dataType: 'json',
+    //        data: dataNuevaEspe,
+    //        success: function (respuesta) {
+    //            //debugger;
+    //            console.log(respuesta);
+    //            Getespecies();
+    //        },
+    //        error: function (respuesta) {
+    //            console.log(respuesta);
+    //        }
+    //    });
 
-        $.ajax({
-            url: 'http://localhost:51093/api/Especies/5',
-            type: "PUT",
-            dataType: 'json',
-            data: dataNuevaEspe,
-            success: function (respuesta) {
-                Getespecies();
-            },
-            error: function (respuesta) {
-                console.log(respuesta);
-            }
-        });
-
-
-        $.ajax({
-            url: 'http://localhost:51093/api/Especies/5',
-            type: "DELETE",
-            success: function (respuesta) {
-                Getespecies();
-            },
-            error: function (respuesta) {
-                console.log(respuesta);
-            }
-        });
+    //    $.ajax({
+    //        url: 'http://localhost:51093/api/Especies/5',
+    //        type: "PUT",
+    //        dataType: 'json',
+    //        data: dataNuevaEspe,
+    //        success: function (respuesta) {
+    //            Getespecies();
+    //        },
+    //        error: function (respuesta) {
+    //            console.log(respuesta);
+    //        }
+    //    });
 
 
-    });
+    //    $.ajax({
+    //        url: 'http://localhost:51093/api/Especies/5',
+    //        type: "DELETE",
+    //        success: function (respuesta) {
+    //            Getespecies();
+    //        },
+    //        error: function (respuesta) {
+    //            console.log(respuesta);
+    //        }
+    //    });
 
-    Getespecies();
+
+    //});
+
+    //Getespecies();
 
 
 
